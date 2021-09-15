@@ -10,7 +10,7 @@ namespace GameConsoleClient
 {
     public class TestGameService
     {
-        static Random random = new Random();
+        
         [Fact]
         public void TestDoesPlayerExistInMatch()
         {
