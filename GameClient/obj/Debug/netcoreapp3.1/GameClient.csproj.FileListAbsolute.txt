@@ -1,0 +1,16 @@
+C:\Users\sbhagnani\source\repos\GameService\GameClient\bin\Debug\netcoreapp3.1\GameClient.exe
+C:\Users\sbhagnani\source\repos\GameService\GameClient\bin\Debug\netcoreapp3.1\GameClient.deps.json
+C:\Users\sbhagnani\source\repos\GameService\GameClient\bin\Debug\netcoreapp3.1\GameClient.runtimeconfig.json
+C:\Users\sbhagnani\source\repos\GameService\GameClient\bin\Debug\netcoreapp3.1\GameClient.runtimeconfig.dev.json
+C:\Users\sbhagnani\source\repos\GameService\GameClient\bin\Debug\netcoreapp3.1\GameClient.dll
+C:\Users\sbhagnani\source\repos\GameService\GameClient\bin\Debug\netcoreapp3.1\GameClient.pdb
+C:\Users\sbhagnani\source\repos\GameService\GameClient\bin\Debug\netcoreapp3.1\GameService.dll
+C:\Users\sbhagnani\source\repos\GameService\GameClient\bin\Debug\netcoreapp3.1\GameService.pdb
+C:\Users\sbhagnani\source\repos\GameService\GameClient\obj\Debug\netcoreapp3.1\GameClient.csprojAssemblyReference.cache
+C:\Users\sbhagnani\source\repos\GameService\GameClient\obj\Debug\netcoreapp3.1\GameClient.AssemblyInfoInputs.cache
+C:\Users\sbhagnani\source\repos\GameService\GameClient\obj\Debug\netcoreapp3.1\GameClient.AssemblyInfo.cs
+C:\Users\sbhagnani\source\repos\GameService\GameClient\obj\Debug\netcoreapp3.1\GameClient.csproj.CoreCompileInputs.cache
+C:\Users\sbhagnani\source\repos\GameService\GameClient\obj\Debug\netcoreapp3.1\GameClient.csproj.CopyComplete
+C:\Users\sbhagnani\source\repos\GameService\GameClient\obj\Debug\netcoreapp3.1\GameClient.dll
+C:\Users\sbhagnani\source\repos\GameService\GameClient\obj\Debug\netcoreapp3.1\GameClient.pdb
+C:\Users\sbhagnani\source\repos\GameService\GameClient\obj\Debug\netcoreapp3.1\GameClient.genruntimeconfig.cache
