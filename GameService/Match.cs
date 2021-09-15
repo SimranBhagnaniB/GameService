@@ -14,58 +14,56 @@ namespace GameService
 
 
         public static string StartMatchInformation { get; set; } = $"Lets start the Match. Match Has {GAMESINMATCH} Games";
-        private readonly List<Player> players;
-        public ConcurrentDictionary<Game, Player> _matchRecord { get; set; }
+        private readonly List<Player> matchPlayers;
+        public List<Player> WinnerOfMatch { get; private set; }
+        //Maintain the GameRecord with Game and Winner Players of the each Game
+        private ConcurrentDictionary<Game, List<Player>> MatchRecord { get; set; }
 
         public Match()
         {
-            _matchRecord = new ConcurrentDictionary<Game, Player>();
-            players = new List<Player>();
+            MatchRecord = new ConcurrentDictionary<Game, List<Player>>();
+            matchPlayers = new List<Player>();
+            WinnerOfMatch = new List<Player>();
         }
         private void IntializeMatch()
         {
-            if (_matchRecord.Count == 0)
+            if (MatchRecord.Count == 0)
             {
                 for (int i = 0; i < GAMESINMATCH; i++)
                 {
-                    Game game = new Game(Guid.NewGuid(), players);
+                    Game game = new Game(Guid.NewGuid(), matchPlayers);
                     game.GameFinished += Game_GameFinished;
-                    _matchRecord.TryAdd(game,null);
+                    MatchRecord.TryAdd(game,null);
                 }
             }
         }
 
-        
-
-        public string GetWinnerOfMatch()
+        public void EndMatch()
         {
-            var topWinner = new Dictionary<string, int>();
-            foreach (var  record in _matchRecord)
-            {
-
-                if (topWinner.TryGetValue(record.Value.Name, out int count))
-                {
-                    topWinner[record.Value.Name] = count + 1;
-                }
-                else
-                {
-                    topWinner.Add(record.Value.Name, 1);
-                }
-            }
-           return topWinner.OrderByDescending(kvp => kvp.Value).Take(1).Select(kvp => kvp.Key).FirstOrDefault();
-
+            int topScore = matchPlayers.Max(x => x.Score);
+            WinnerOfMatch= matchPlayers.Where(x => x.Score == topScore).ToList();
         }
 
+      
         private void Game_GameFinished(object sender, EventArgs e)
         {
             Game game = (Game)sender;
-            List<Player> playersList = game.GetWinnerOfGame();
-            _matchRecord.TryUpdate(game, playersList[0], null);
+            List<Player> playersList = game.WinnerOfGame;
+            MatchRecord.TryUpdate(game, playersList, null);
+            foreach (var matchplayer in from Player matchplayer in matchPlayers
+                                        from _ in
+                                            from Player gameWinnerPlayer in playersList
+                                            where matchplayer.Name == gameWinnerPlayer.Name
+                                            select new { }
+                                        select matchplayer)
+            {
+                matchplayer.Score += 1;
+            }
         }
 
         public bool CanMatchBeStarted()
         {
-            if (players.Count == PLAYERSINMATCH)
+            if (matchPlayers.Count == PLAYERSINMATCH)
                 return true;
             return false;
         }
@@ -83,21 +81,21 @@ namespace GameService
         }
         public List<Game> GetAllGames()
         {
-            return _matchRecord.Keys.ToList();
+            return MatchRecord.Keys.ToList();
         }
 
         public bool DoesPlayerExist(string name, PlayerType playerType)
         {
-            return players.Any(x => x.Name == name && x.PlayerType == playerType);
+            return matchPlayers.Any(x => x.Name == name && x.PlayerType == playerType);
         }
         public void AddPlayertoMatch(string name, PlayerType playerType)
         {
-            players.Add(new Player(name, playerType));
+            matchPlayers.Add(new Player(name, playerType));
         }
 
         public List<Player> GetPlayersofMatch()
         {
-            return players;
+            return matchPlayers;
         }
 
     }

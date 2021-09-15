@@ -8,12 +8,14 @@ namespace Gameservice
     {
         public PlayerType PlayerType { get; set; }
         public string Name { get; set; }
+        public int Score { get; internal set; }
         public static string ChoosePlayerTypeInformation { get; set; } = $"Choose Player Type {GetAllPlayerTypes()} ";
 
         public Player(string name,PlayerType type)
         {
             Name = name;
             PlayerType = type;
+            Score = 0;
         }
         public static string GetAllPlayerTypes()
         {

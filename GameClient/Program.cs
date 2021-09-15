@@ -26,16 +26,21 @@ namespace GameClient
             {
                 Console.Write("Start Game {0} :", game.GameId);
                 StartGame(game);
-                GetWinnerOfGame(game);
                 EndGame(game);
+                GetWinnerOfGame(game);
+                
             }
             GetWinnerOfMatch(match);
         }
 
         private static void GetWinnerOfMatch(Match match)
         {
-            string player = match.GetWinnerOfMatch();
-            Console.WriteLine("Congratulations {0} , You have won the match", player);
+            match.EndMatch();
+            List<Player> players = match.WinnerOfMatch;
+            foreach (Player player in players)
+            {
+                Console.WriteLine("Congratulations {0} : {1} , You have won the match, match points :{2}", player.Name, player.PlayerType, player.Score);
+            }
         }
 
         private static void EndGame(Game game)
@@ -45,10 +50,10 @@ namespace GameClient
 
         private static void GetWinnerOfGame(Game game)
         {
-            List<Player> players = game.GetWinnerOfGame();
+            List<Player> players = game.WinnerOfGame;
             foreach (Player player in players)
             {
-                Console.WriteLine("Congratulations winner of the game : {0} - {1}", player.Name, player.PlayerType);
+                Console.WriteLine("\n\nCongratulations winner of the game : {0} - {1}\n\n", player.Name, player.PlayerType);
             }
         }
         private static void StartGame(Game game)

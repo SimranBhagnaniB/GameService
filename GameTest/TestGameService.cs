@@ -45,16 +45,27 @@ namespace GameConsoleClient
             match.AddPlayertoMatch("SimRan", PlayerType.HUMAN);
             match.AddPlayertoMatch("XYX", PlayerType.COMPUTER);
             match.StartMatch();
-            List<Player> players =match.GetPlayersofMatch();
+         
             List<Game> games = match.GetAllGames();
-            match._matchRecord.TryUpdate(games[0], players[0], null);
-            match._matchRecord.TryUpdate(games[1], players[0], null);
-            match._matchRecord.TryUpdate(games[2], players[1], null);
-            Assert.Equal(match.GetWinnerOfMatch(),players[0].Name);
+            foreach (var game in games)
+            {
+                foreach (Player player in game.GetPlayersofGame())
+                {
+                    if (player.Name == "SimRan")
+                        game.SetMoveForPlayer(player, MoveType.ROCK);
+                    else
+                        game.SetMoveForPlayer(player, MoveType.PAPER);
+                }
+                game.EndGame();
+            }
+            match.EndMatch();
+            
+            Assert.True(match.WinnerOfMatch.Count==1);
+            Assert.True(match.WinnerOfMatch[0].Name == "XYX");
         }
 
         [Fact]
-        private void TestPlayerExistsInGame()
+        public void TestPlayerExistsInGame()
         {
             Player player1 = new Player("Test1", PlayerType.HUMAN);
             Player player2 = new Player("Test2", PlayerType.HUMAN);
@@ -69,7 +80,7 @@ namespace GameConsoleClient
         }
 
         [Fact]
-        private void TestGetWinnerOfGame()
+        public void TestGetWinnerOfGame()
         {
 
             Player player1 = new Player("Test1", PlayerType.HUMAN);
@@ -80,15 +91,25 @@ namespace GameConsoleClient
                 player2,
             };
             Game game = new Game(Guid.NewGuid(), players);
-            game.SetMoveForPlayer(player1, MoveType.PAPER);
-            game.SetMoveForPlayer(player2, MoveType.SCISSOR);
-            List<Player> winners = game.GetWinnerOfGame();
+            foreach (Player player in game.GetPlayersofGame())
+            {
+                if (player.Name == "Test1")
+                {
+                    game.SetMoveForPlayer(player, MoveType.PAPER);
+                }
+                else
+                {
+                    game.SetMoveForPlayer(player, MoveType.SCISSOR);
+                }
+            }
+            game.EndGame();
+            List<Player> winners = game.WinnerOfGame;
             Assert.True(winners.Count==1);
             Assert.True(winners[0].Name == player2.Name);
         }
 
         [Fact]
-        private void TestCompareMoves()
+        public void TestCompareMoves()
         {
             List < MoveType > moveTypes = new List<MoveType> { MoveType.ROCK, MoveType.SCISSOR, MoveType.PAPER };
             MoveType type = Movement.CompareMoves(moveTypes);
@@ -96,7 +117,7 @@ namespace GameConsoleClient
         }
 
         [Fact]
-        private void TestCompareMoves2()
+        public void TestCompareMoves2()
         {
             MoveType x = MoveType.ROCK;
             MoveType y = MoveType.SCISSOR;

@@ -13,11 +13,15 @@ namespace GameService
         public Guid GameId { get; }
         private readonly ConcurrentDictionary<Player, Movement> GameRecord;
         public event EventHandler GameFinished;
+        public bool IsDraw { get; private set; } = false;
+        public List<Player> WinnerOfGame { get; private set; }
 
         public Game(Guid id, List<Player> players)
         {
             GameId = id;
             GameRecord = new ConcurrentDictionary<Player, Movement>();
+            IsDraw = false;
+            WinnerOfGame = new List<Player>();
             AddPlayertoGame(players);
         }
 
@@ -29,12 +33,12 @@ namespace GameService
         {
             foreach (Player player in players)
             {
-                GameRecord.TryAdd(player, null);
+               AddPlayertoGame(player.Name, player.PlayerType);
             }
         }
-        public void AddPlayertoGame(string name,PlayerType playerType)
+        public void AddPlayertoGame(string name, PlayerType playerType)
         {
-            GameRecord.TryAdd(new Player(name,playerType), null);
+            GameRecord.TryAdd(new Player(name, playerType), null);
         }
         public List<Player> GetPlayersofGame()
         {
@@ -43,23 +47,54 @@ namespace GameService
 
         public void SetMoveForPlayer(Player player, MoveType move)
         {
-            GameRecord.TryUpdate(player, new Movement(move),null);
+            GameRecord.TryUpdate(player, new Movement(move), null);
         }
 
         public void EndGame()
         {
+            UpdatePlayerScoreInGame();
             GameFinished?.Invoke(this, EventArgs.Empty);
         }
-        public List<Player> GetWinnerOfGame()
+
+        private void UpdateScoreForAllPlayersInGame()
         {
-            List<MoveType> types = GameRecord.Values.Select(x => x.MoveType).ToList();
-            MoveType winnerMove = Movement.CompareMoves(types);
-            return (from record in GameRecord.ToList()
-                    where record.Value.MoveType == winnerMove
-                    select record.Key).ToList();
+            foreach (Player player in GameRecord.Keys)
+            {
+                player.Score += 1;
+                WinnerOfGame.Add(player);
+            }
+        }
+
+        private void UpdateWinnerPlayerScoreInGame(MoveType winnerMove)
+        {
+            
+            foreach (KeyValuePair<Player, Movement> record in GameRecord)
+            {
+                if (record.Value.MoveType == winnerMove)
+                {
+                    record.Key.Score = record.Key.Score + 1;
+                    WinnerOfGame.Add(record.Key);
+                }
+            }
+
+        }
+
+        private void UpdatePlayerScoreInGame()
+        {
+            List<MoveType> types = GameRecord.Values.Select(x => x.MoveType).Distinct().ToList();
+            IsDraw = types.Count == 1;
+            if (IsDraw) UpdateScoreForAllPlayersInGame();
+            else
+            {
+                MoveType winnerMove = Movement.CompareMoves(types);
+                UpdateWinnerPlayerScoreInGame(winnerMove);
+            }
             
         }
-       
 
+        public void StartGame()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
