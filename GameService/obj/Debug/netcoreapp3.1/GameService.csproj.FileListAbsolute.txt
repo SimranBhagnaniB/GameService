@@ -12,6 +12,7 @@ C:\Users\sbhagnani\source\repos\GameService\GameService\bin\Debug\netcoreapp3.1\
 C:\Users\sbhagnani\source\repos\GameService\GameService\bin\Debug\netcoreapp3.1\GameService.pdb
 C:\Users\sbhagnani\source\repos\GameService\GameService\obj\Debug\netcoreapp3.1\GameService.AssemblyInfoInputs.cache
 C:\Users\sbhagnani\source\repos\GameService\GameService\obj\Debug\netcoreapp3.1\GameService.AssemblyInfo.cs
-C:\Users\sbhagnani\source\repos\GameService\GameService\obj\Debug\netcoreapp3.1\GameService.csproj.CoreCompileInputs.cache
 C:\Users\sbhagnani\source\repos\GameService\GameService\obj\Debug\netcoreapp3.1\GameService.dll
 C:\Users\sbhagnani\source\repos\GameService\GameService\obj\Debug\netcoreapp3.1\GameService.pdb
+C:\Users\sbhagnani\source\repos\GameService\GameService\obj\Debug\netcoreapp3.1\GameService.csprojAssemblyReference.cache
+C:\Users\sbhagnani\source\repos\GameService\GameService\obj\Debug\netcoreapp3.1\GameService.csproj.CoreCompileInputs.cache

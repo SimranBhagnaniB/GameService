@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "/GZjB+qxHxdMoAn/WfPfYoOZ5lJVJkKUoYYmL6evLdX3nlUYUIPt1daW2ngceHwAiQFKUPSEQx7oL3krikEKrg==",
+  "dgSpecHash": "WGdjANsbEiBdyMt0TZw/3IzZbKqjp48+lajT0iQnrzaiIEod338iDU44svXKSWuAh5Wlco5R37LFJFeuv462Vg==",
   "success": true,
   "projectFilePath": "C:\\Users\\sbhagnani\\source\\repos\\GameService\\GameClient\\GameClient.csproj",
   "expectedPackageFiles": [
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
+    "C:\\Users\\sbhagnani\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.collections.concurrent\\4.3.0\\system.collections.concurrent.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.diagnostics.debug\\4.3.0\\system.diagnostics.debug.4.3.0.nupkg.sha512",

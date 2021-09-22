@@ -6,8 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ClassLibrary1\GameService.csproj" />
-    <ProjectReference Include="..\GameService\GameService.csproj" />
+    <ProjectReference Include="..\GameServiceWithController\GameServiceWithController.csproj" />
   </ItemGroup>
 
 </Project>

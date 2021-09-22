@@ -92,8 +92,8 @@
               "C:\\Users\\sbhagnani\\source\\repos\\GameService\\ClassLibrary1\\GameService.csproj": {
                 "projectPath": "C:\\Users\\sbhagnani\\source\\repos\\GameService\\ClassLibrary1\\GameService.csproj"
               },
-              "C:\\Users\\sbhagnani\\source\\repos\\GameService\\GameService\\GameService.csproj": {
-                "projectPath": "C:\\Users\\sbhagnani\\source\\repos\\GameService\\GameService\\GameService.csproj"
+              "C:\\Users\\sbhagnani\\source\\repos\\GameService\\GameServiceWithController\\GameServiceWithController.csproj": {
+                "projectPath": "C:\\Users\\sbhagnani\\source\\repos\\GameService\\GameServiceWithController\\GameServiceWithController.csproj"
               }
             }
           }
@@ -106,6 +106,12 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -117,6 +123,9 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
@@ -125,14 +134,14 @@
         }
       }
     },
-    "C:\\Users\\sbhagnani\\source\\repos\\GameService\\GameService\\GameService.csproj": {
+    "C:\\Users\\sbhagnani\\source\\repos\\GameService\\GameServiceWithController\\GameServiceWithController.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sbhagnani\\source\\repos\\GameService\\GameService\\GameService.csproj",
-        "projectName": "GameService",
-        "projectPath": "C:\\Users\\sbhagnani\\source\\repos\\GameService\\GameService\\GameService.csproj",
+        "projectUniqueName": "C:\\Users\\sbhagnani\\source\\repos\\GameService\\GameServiceWithController\\GameServiceWithController.csproj",
+        "projectName": "GameServiceWithController",
+        "projectPath": "C:\\Users\\sbhagnani\\source\\repos\\GameService\\GameServiceWithController\\GameServiceWithController.csproj",
         "packagesPath": "C:\\Users\\sbhagnani\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sbhagnani\\source\\repos\\GameService\\GameService\\obj\\",
+        "outputPath": "C:\\Users\\sbhagnani\\source\\repos\\GameService\\GameServiceWithController\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -161,6 +170,10 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "System.Collections": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            },
             "System.Collections.Concurrent": {
               "target": "Package",
               "version": "[4.3.0, )"
@@ -177,6 +190,9 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

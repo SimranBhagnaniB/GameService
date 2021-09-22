@@ -20,6 +20,15 @@
           "lib/netstandard1.0/_._": {}
         }
       },
+      "Newtonsoft.Json/13.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
       "System.Collections/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -28,7 +37,7 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/_._": {}
+          "ref/netstandard1.3/System.Collections.dll": {}
         }
       },
       "System.Collections.Concurrent/4.3.0": {
@@ -203,6 +212,23 @@
         "runtime": {
           "bin/placeholder/GameService.dll": {}
         }
+      },
+      "GameServiceWithController/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "System.Collections": "4.3.0",
+          "System.Collections.Concurrent": "4.3.0"
+        },
+        "compile": {
+          "bin/placeholder/GameServiceWithController.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GameServiceWithController.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       }
     }
   },
@@ -234,6 +260,33 @@
         "microsoft.netcore.targets.1.1.0.nupkg.sha512",
         "microsoft.netcore.targets.nuspec",
         "runtime.json"
+      ]
+    },
+    "Newtonsoft.Json/13.0.1": {
+      "sha512": "ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A==",
+      "type": "package",
+      "path": "newtonsoft.json/13.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.xml",
+        "newtonsoft.json.13.0.1.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "packageIcon.png"
       ]
     },
     "System.Collections/4.3.0": {
@@ -1242,13 +1295,20 @@
     },
     "GameService/1.0.0": {
       "type": "project",
-      "path": "../GameService/GameService.csproj",
-      "msbuildProject": "../GameService/GameService.csproj"
+      "path": "../ClassLibrary1/GameService.csproj",
+      "msbuildProject": "../ClassLibrary1/GameService.csproj"
+    },
+    "GameServiceWithController/1.0.0": {
+      "type": "project",
+      "path": "../GameServiceWithController/GameServiceWithController.csproj",
+      "msbuildProject": "../GameServiceWithController/GameServiceWithController.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "GameService >= 1.0.0"
+      "GameService >= 1.0.0",
+      "GameServiceWithController >= 1.0.0",
+      "Newtonsoft.Json >= 13.0.1"
     ]
   },
   "packageFolders": {
@@ -1283,8 +1343,8 @@
             "C:\\Users\\sbhagnani\\source\\repos\\GameService\\ClassLibrary1\\GameService.csproj": {
               "projectPath": "C:\\Users\\sbhagnani\\source\\repos\\GameService\\ClassLibrary1\\GameService.csproj"
             },
-            "C:\\Users\\sbhagnani\\source\\repos\\GameService\\GameService\\GameService.csproj": {
-              "projectPath": "C:\\Users\\sbhagnani\\source\\repos\\GameService\\GameService\\GameService.csproj"
+            "C:\\Users\\sbhagnani\\source\\repos\\GameService\\GameServiceWithController\\GameServiceWithController.csproj": {
+              "projectPath": "C:\\Users\\sbhagnani\\source\\repos\\GameService\\GameServiceWithController\\GameServiceWithController.csproj"
             }
           }
         }
@@ -1297,6 +1357,12 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "dependencies": {
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "[13.0.1, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",
@@ -1308,6 +1374,9 @@
         "assetTargetFallback": true,
         "warn": true,
         "frameworkReferences": {
+          "Microsoft.AspNetCore.App": {
+            "privateAssets": "none"
+          },
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
